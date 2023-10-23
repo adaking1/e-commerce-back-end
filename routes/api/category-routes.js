@@ -5,15 +5,14 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   try{
-    const categoryData = await Category.findAll();
+    const categoryData = await Category.findAll({
+      include: [{model: Product}]
+    });
     res.status(200).json(categoryData);
   }
   catch (err) {
     res.status(500).json(err);
   }
-  // find all categories
-  // be sure to include its associated Products
-  // TRY USING "include:[{}]"
 });
 
 router.get('/:id', async (req, res) => {
@@ -28,29 +27,51 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(categoryData);
   }
   catch (err) {
-    res.status(404).json({message: 'No category with this id!'})
+    res.status(500).json(err);
   }
-  // find one category by its `id` value
-  // be sure to include its associated Products
 });
 
 router.post('/', async (req, res) => {
   try{
     const newCategory = await Category.create(req.body);
-    res.json(200).json(newCategory);
+    if (!newCategory) {
+      res.status(404).json({message: 'Enter a category name in the request body'})
+    }
+    res.status(200).json(newCategory);
   }
   catch (err) {
-    res.json(500).json(err);
+    res.status(500).json(err);
   }
-  // create a new category
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+router.put('/:id', async (req, res) => {
+  try{
+    const categoryData = await Category.findByPk(req.params.id);
+    if (!categoryData) {
+      res.status(404).json({message: 'No category with this id'});
+      return;
+    }
+    categoryData.category_name = req.body.category_id;
+    await categoryData.save();
+    res.json(categoryData);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+router.delete('/:id', async (req, res) => {
+  try{
+    const categoryData = await Category.destroy({where:{id: req.params.id}});
+    if (!categoryData) {
+      res.status(404).json({message: 'No category with this id'});
+      return;
+    }
+    res.status(200).json(categoryData);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
