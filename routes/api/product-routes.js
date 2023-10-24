@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
       // if no product tags, just respond
       res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((productTagIds) => res.status(200).json({message: 'Product Created', productTagIds}))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -104,7 +104,7 @@ router.put('/:id', (req, res) => {
         });
       }
 
-      return res.json(product);
+      return res.json({message: 'Product Updated!'});
     })
     .catch((err) => {
       console.log(err);
@@ -119,7 +119,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({message: 'No product with this id'});
       return;
     }
-    res.status(200).json(productData);
+    res.status(200).json({message: 'Product Deleted!'});
   }
   catch (err) {
     res.status(500).json(err);

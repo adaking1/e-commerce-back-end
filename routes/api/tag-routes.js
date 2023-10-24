@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
     if (!tagData) {
       res.status(404).json({message: 'Enter tag name in the request body'})
     }
-    res.status(200).json(tagData);
+    res.status(200).json({message: 'Tag Created!', tagData});
   }
   catch (err) {
     res.status(500).json(err);
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     }
     tagData.tag_name = req.body.tag_name;
     await tagData.save();
-    res.status(200).json(tagData);
+    res.status(200).json({message: 'Tage Updated!', tagData});
   }
   catch (err) {
     res.status(500).json(err);
@@ -70,7 +70,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({message: 'No tag with this id'});
       return;
     }
-    res.status(200).json(tagData);
+    res.status(200).json({message: 'Tag Deleted!'});
   }
   catch (err) {
     res.status(500).json(err);

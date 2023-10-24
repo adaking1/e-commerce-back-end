@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     if (!newCategory) {
       res.status(404).json({message: 'Enter a category name in the request body'})
     }
-    res.status(200).json(newCategory);
+    res.status(200).json({message: 'Category Created!', newCategory});
   }
   catch (err) {
     res.status(500).json(err);
@@ -53,7 +53,7 @@ router.put('/:id', async (req, res) => {
     }
     categoryData.category_name = req.body.category_id;
     await categoryData.save();
-    res.json(categoryData);
+    res.json({message: 'Category Updated!', categoryData});
   }
   catch (err) {
     res.status(500).json(err);
@@ -67,7 +67,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({message: 'No category with this id'});
       return;
     }
-    res.status(200).json(categoryData);
+    res.status(200).json({message: 'Category Deleted!'});
   }
   catch (err) {
     res.status(500).json(err);
