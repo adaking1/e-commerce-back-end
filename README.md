@@ -1,5 +1,7 @@
 # E-Commerce Back-End
 
+![Image](image.png)  
+
 ## Table of Contents
 -[Description](#description)  
 -[Installation](#installation)  
@@ -16,6 +18,8 @@ Internet retail is a huge business and it is important to be able to keep up wit
 To install this app to your local machine you first need to create a .env file with the database name, your mysql user name, and your mysql password. This will allow the npm package dotenv to use that info in the code. Next, make sure to run an npm install by typing "npm i" into the terminal. Next, log in to the mysql shell and run the schema by typing "SOURCE db/schema.sql". Then, exit out of the mysql shell. Now your application is ready to start. If you want to add seeds to the application, type "npm run seed" into the terminal and test data will be added. To start the app, type "npm start", and the server will start running and listening for api calls.
 
 ## Usage
+[Usage Video](https://drive.google.com/file/d/1Xyqtm02dbB1NnhiyRe_lpSR1ge7I28sm/view)  
+  
 To use this application, make sure that your terminal is located in the file that holds the app. Then run the installation commands described in the installation section of this readme. Once the server has started, open a back-end environment like Insomnia to be able to interact with the server without a front-end. The api routes are directed through six endpoints: /api/categories, /api/products, /api/tags, /api/categories/:id, /api/products/:id, and /api/tags/:id. To view all categories, products, or tags make a GET request to the endpoints /api/categories, /api/products, and /api/tags respectively. To view a specific category, product, or tag make a GET request to the endpoints /api/categories/:id, /api/products/:id,  and /api/tags/:id respectively, with ":id" replaced by an id number. To add a category, make a POST request to the endpoint /api/categories with a new "category_name" in the body formatted in JSON. To add a new product, make a POST request to the endpoint /api/products with at least a new "product_name", "price", and tagIds in the body formatted in JSON. Optional paramaters are amount of "stock" (will default to 10) and "category_id". To add a new tag, make a POST request to the endpoint /api/tags with the "tag_name" in the body formatted as JSON. To update a category, product, or tag make a POST request to the endpoints /api/categories/:id, /api/products/:id, and api/tags/:id respectively with whatever parameters need to be changed in the body, formatted as JSON with ":id" in the endpoint being an id number. To delete a category, product, or tag make a DELETE request to the endpoints /api/categories/:id, /api/products/:id, and /api/tags/:id with ":id" being the id of the category, product, or tag you want to delete. To stop the server, type "control + c" in your terminal.
 
 ## Contributing
