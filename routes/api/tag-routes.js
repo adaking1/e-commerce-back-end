@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     }
     tagData.tag_name = req.body.tag_name;
     await tagData.save();
-    res.status(200).json({message: 'Tage Updated!', tagData});
+    res.status(200).json({message: 'Tag Updated!', tagData});
   }
   catch (err) {
     res.status(500).json(err);
