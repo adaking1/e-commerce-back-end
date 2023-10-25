@@ -26,7 +26,7 @@ To use this application, make sure that your terminal is located in the file tha
 To contribe, fork the project, create a branch to work on, edit that branch, and then create a pull request. If the edits are approved, your contributions will be added.
 
 ## Credits
-This project was sourced from a Uconn web development bootcamp in the following repo: https://git.bootcampcontent.com/University-of-Connecticut/CONN-VIRT-FSF-PT-07-2023-U-LOLC.git. There are also references to the documentation for express.js, sequelize, mysql and dotenv.
+This project was sourced from a Uconn web development bootcamp with some edits in the following repo: https://git.bootcampcontent.com/University-of-Connecticut/CONN-VIRT-FSF-PT-07-2023-U-LOLC.git. The routes and models were created mostly by me. There are also references to the documentation for express.js, sequelize, mysql and dotenv.
 
 ## License
 This project is not protected under any license.
