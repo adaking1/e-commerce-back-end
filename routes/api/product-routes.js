@@ -3,7 +3,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// get all products
+// get route that gets all products with their associated category and tag information
 router.get('/', async (req, res) => {
   try{
     const productData = await Product.findAll({
@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// this get route returns a specific product by using its id
 router.get('/:id', async (req, res) => {
   try{
     const productData = await Product.findByPk(req.params.id, {
@@ -35,16 +36,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// create new product
+// this post route creates a new product by taking in a req body with "product_name", "price", "stock", and "[tagIds] as inputs"
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -67,7 +60,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// update product
+// this put route updates a specific product by using its id. It takes in updates through the req body.
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -112,6 +105,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// this delete route deletes a specific route by using its id
 router.delete('/:id', async (req, res) => {
   try{
     const productData = await Product.destroy({where:{id: req.params.id}});

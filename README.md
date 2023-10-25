@@ -1,6 +1,6 @@
 # E-Commerce Back-End
 
-![Image](image.png)  
+![Image](./assets/screenshot.png)  
 
 ## Table of Contents
 -[Description](#description)  
